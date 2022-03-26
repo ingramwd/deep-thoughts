@@ -3,6 +3,8 @@ import React from 'react';
 import { useParams } from 'react-router';
 import { QUERY_THOUGHT } from '../utils/queries';
 import ReactionList from '../components/ReactionList';
+import Auth from '../utils/auth';
+import ReactionFrom from '../components/ReactionFrom';
 
 const SingleThought = props => {
 
@@ -34,6 +36,7 @@ const SingleThought = props => {
       </div>
 
       {thought.reactionCount > 0 && <ReactionList reactions={thought.reactions} />}
+      {Auth.loggedIn() && <ReactionFrom thoughtId={thought._id} />}
     </div>
   );
 };
